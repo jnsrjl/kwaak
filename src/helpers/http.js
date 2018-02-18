@@ -30,3 +30,18 @@ export function get(url) {
     throw new Error('Network response was not ok.');
   })
 }
+
+export function post(url, data) {
+  return fetch(HOST + url, {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(data),
+  }).then(response => {
+    // Check that response was ok
+    if (response.ok) {
+      return response.json();
+    }
+    // Response wasn't ok
+    throw new Error('Network response was not ok.');
+  })
+}
