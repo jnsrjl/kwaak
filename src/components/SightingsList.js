@@ -10,16 +10,13 @@ class SightingsList extends Component {
     };
   }
 
-  componentDidMount() {
+  renderSightings() {
     get("/sightings").then(sightings => {
-      console.log(sightings);
       this.setState({ sightings: sightings });
     }).catch((error) => {
       console.log(error);
     });
-  }
 
-  renderSightings() {
     return this.state.sightings.map((sighting) => (
       <li key={ sighting.id }>
         { sighting.id } : { sighting.description }
